@@ -1,21 +1,29 @@
-<!DOCTYPE html>
 <html>
-<head>   
-</head>
-<body>
-    <button type="button" onclick="sendPaymentDataToAnet()">Pay2</button>
-    <input type="text" id="Result" name="Result" value="Mickey">
-    <script> src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
-    <script> type="text/javascript"</script>
-    
-    <script type="text/javascript">
-
-     function sendPaymentDataToAnet() {
-            $.post("https://jogendarb.github.io/Test.php", { a: 1, b: 2 }, function (data) {
-                document.getElementById("Result").value = "data";
-         });
+<head>
+    <script>
+        function showHint(str) {
+            if (str.length == 0) {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "gethint.php?q=" + str, true);
+                xmlhttp.send();
+            }
         }
     </script>
+</head>
+<body>
 
+    <p><b>Start typing a name in the input field below:</b></p>
+    <form>
+        First name: <input type="text" onkeyup="showHint(this.value)">
+    </form>
+    <p>Suggestions: <span id="txtHint"></span></p>
 </body>
 </html>
