@@ -1,13 +1,22 @@
+<!DOCTYPE html>
 <html>
-<head>
+<head>   
 </head>
-    <body>
-        <input type="text" name="cardNumber" id="cardNumber" placeholder="cardNumber" /> <br><br>
-        <input type="text" name="expMonth" id="expMonth" placeholder="expMonth" /> <br><br>
-        <input type="text" name="expYear" id="expYear" placeholder="expYear" /> <br><br>
-        <input type="text" name="cardCode" id="cardCode" placeholder="cardCode" /> <br><br>
-        <input type="hidden" name="dataValue" id="dataValue" />
-        <input type="hidden" name="dataDescriptor" id="dataDescriptor" />
-        <button type="button" onclick="sendPaymentDataToAnet()">Pay3</button>
-    </body>
+<body>
+    <button type="button" onclick="sendPaymentDataToAnet()">Pay1</button>
+    <input type="text" id="Result" name="Result" value="Mickey">
+    <script src="JSBridge.js"></script>
+    <script> type="text/javascript"</script>
+    <script> src ="JQuery.js"></script>
+
+    <script type="text/javascript">
+
+     function sendPaymentDataToAnet() {
+            $.post("https://jogendarb.github.io/Test.php", { a: 1, b: 2 }, function (data) {
+                document.getElementById("Result").value = "data";
+         });
+        }
+    </script>
+
+</body>
 </html>
